@@ -8,6 +8,8 @@ const SocialUser = () => {
     youtube: false,
   });
 
+  const [selected, setSelected] = useState([]);
+
   const data = [
     { id: 1, name: "A", followers: "1", rate: "9" },
     { id: 2, name: "B", followers: "2", rate: "8" },
@@ -20,6 +22,22 @@ const SocialUser = () => {
     { id: 9, name: "I", followers: "9", rate: "1" },
     { id: 10, name: "J", followers: "10", rate: "0" },
   ];
+
+  // Handle the selection of individual checkboxes
+  const handleCheckboxChange = (id) => {
+    setSelected((prevSelected) =>
+      prevSelected.includes(id) ? prevSelected.filter((item) => item !== id) : [...prevSelected, id],
+    );
+  };
+
+  // Handle master checkbox change (select/deselect all)
+  const handleMasterCheckboxChange = () => {
+    if (selected.length === data.length) {
+      setSelected([]); // Deselect all if all are selected
+    } else {
+      setSelected(data.map((item) => item.id)); // Select all
+    }
+  };
 
   return (
     <div className="border border-gray-400 h-full">
@@ -54,8 +72,13 @@ const SocialUser = () => {
           className="mt-2 sm:mt-0 ml-4 sm:ml-6 p-2 border rounded focus:outline-none focus:ring-0"
         />
       </div>
-      <div className="border-b border-b-gray-400 p-4">
-        <p className="text-sm text-right">Showing 1 - 10 of 128.1M profiles</p>
+      <div className="border-b border-b-gray-400 p-4 flex items-center justify-between">
+        <input
+          type="checkbox"
+          checked={selected.length === data.length}
+          onChange={handleMasterCheckboxChange}
+        />
+        <p className="text-sm">Showing 1 - 10 of 128.1M profiles</p>
       </div>
       <div className="overflow-y-auto h-96 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
         <table className="min-w-full table-auto">
@@ -70,7 +93,14 @@ const SocialUser = () => {
           <tbody>
             {data.map((item) => (
               <tr key={item.id}>
-                <td className="px-4 py-2">{item.name}</td>
+                <td className="px-4 py-2 flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={selected.includes(item.id)}
+                    onChange={() => handleCheckboxChange(item.id)}
+                  />
+                  <span className="ml-2">{item.name}</span>
+                </td>
                 <td className="px-4 py-2">{item.followers}</td>
                 <td className="px-4 py-2">{item.rate}</td>
                 <td className="px-4 py-2">

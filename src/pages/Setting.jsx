@@ -64,7 +64,7 @@ const Setting = () => {
       <Sidebar className="hidden lg:block" />
 
       <div className="flex-1 flex flex-col">
-        <Header data="Messages" />
+        <Header data="Settings" />
 
         <div className="flex flex-1 flex-col lg:flex-row">
           <div className="w-full lg:w-1/4 bg-white border-r p-6 ml-5 mt-2">
