@@ -23,19 +23,17 @@ const SocialUser = () => {
     { id: 10, name: "J", followers: "10", rate: "0" },
   ];
 
-  // Handle the selection of individual checkboxes
   const handleCheckboxChange = (id) => {
     setSelected((prevSelected) =>
       prevSelected.includes(id) ? prevSelected.filter((item) => item !== id) : [...prevSelected, id],
     );
   };
 
-  // Handle master checkbox change (select/deselect all)
   const handleMasterCheckboxChange = () => {
     if (selected.length === data.length) {
-      setSelected([]); // Deselect all if all are selected
+      setSelected([]);
     } else {
-      setSelected(data.map((item) => item.id)); // Select all
+      setSelected(data.map((item) => item.id));
     }
   };
 
@@ -69,7 +67,7 @@ const SocialUser = () => {
         <input
           type="text"
           placeholder="Search Users"
-          className="mt-2 sm:mt-0 ml-4 sm:ml-6 p-2 border rounded focus:outline-none focus:ring-0"
+          className="w-full max-w-xs sm:max-w-sm p-2 border rounded focus:outline-none focus:ring-0"
         />
       </div>
       <div className="border-b border-b-gray-400 p-4 flex items-center justify-between">
