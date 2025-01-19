@@ -24,28 +24,34 @@ const SocialUser = () => {
   return (
     <div className="border border-gray-400 h-full">
       <div className="flex justify-between border-b border-b-gray-400 p-4">
-        <div className="flex gap-4 items-center text-lg">
+        <div className="flex items-center gap-4 sm:gap-2 text-lg">
           <p
             className={`flex items-center ${
               isActive.instagram ? "text-blue-600 border-b border-b-blue-600" : ""
-            } cursor-pointer mr-4`}
+            } cursor-pointer mr-4 sm:mr-2`}
             onClick={() => setIsActive({ instagram: true, youtube: false })}>
-            Instagram
-            <FaInstagram className="ml-2" />
+            <span className="flex items-center space-x-1 sm:space-x-2">
+              <span className="hidden sm:block">Instagram</span>
+              <FaInstagram />
+            </span>
           </p>
+
           <p
             className={`flex items-center ${
               isActive.youtube ? "text-blue-600 border-b border-b-blue-600" : ""
             } cursor-pointer`}
             onClick={() => setIsActive({ instagram: false, youtube: true })}>
-            Youtube <FaYoutube className="ml-2" />
+            <span className="flex items-center space-x-1 sm:space-x-2">
+              <span className="hidden sm:block">YouTube</span>
+              <FaYoutube />
+            </span>
           </p>
         </div>
 
         <input
           type="text"
           placeholder="Search Users"
-          className="border border-gray-300 p-2 rounded w-full sm:w-1/3"
+          className="mt-2 sm:mt-0 ml-4 sm:ml-6 p-2 border rounded focus:outline-none focus:ring-0"
         />
       </div>
       <div className="border-b border-b-gray-400 p-4">

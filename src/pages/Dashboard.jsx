@@ -11,7 +11,7 @@ const Dashboard = () => {
       </div>
       <div className="col-span-11 flex flex-col w-full md:-ml-5">
         <Header data="Dashboard" />
-        <div className="flex-1 overflow-auto">
+        <div className="flex-1 overflow-auto mr-3">
           <Banner />
           <InfluencerDiscovery />
         </div>

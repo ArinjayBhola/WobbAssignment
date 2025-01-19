@@ -34,6 +34,7 @@ const Sidebar = () => {
     { id: "essages", content: "Messages", path: "/chat" },
     { id: "analytics", content: "Analytics", path: "/analytics" },
     { id: "settings", content: "Settings", path: "/settings" },
+    { id: "lists", content: "Your Lists", path: "/list" },
   ];
 
   return (
